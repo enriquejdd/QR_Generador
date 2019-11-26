@@ -5,7 +5,10 @@
  */
 package qr;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -16,5 +19,10 @@ public class Panel extends JPanel{
     // Tamaño de la ventana. Constantes
     public static final int ANCHO_FRAME = 600;
     public static final int ALTO_FRAME = 200;
+    
+    // Atributos del panel
+    private JLabel labelUrl, labelFichero;
+    private JTextArea txtUrl, txtFichero;
+    private JButton btnGenerar, btnCerrar;
     
 }
