@@ -21,4 +21,27 @@ public class VentanaPrincipal extends JFrame{
     public static final int ANCHO_FRAME = 600;
     public static final int ALTO_FRAME = 200;
     
+    // Construcotr sin parámetros
+    public VentanaPrincipal(){
+        crearVentana();
+    }
+    
+    // Método privado (no se puede usar en otra clase)
+    private void crearVentana(){
+        // Posición y tamaño de la ventana
+        this.setBounds(600, 150, ANCHO_FRAME, ALTO_FRAME);
+        
+        // Título a la ventana
+        this.setTitle("Generador de códigos QR");
+        
+        // Ventana no redimensionable
+        this.setResizable(false);
+        
+        // Cerrar progrma al pulsar el aspa
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        // Hacer visible la ventana
+        this.setVisible(true);
+    }
+    
 }
