@@ -11,4 +11,9 @@ package qr;
  */
 public class Programa {
     
+    public static void main(String[] args) {
+        
+        // Instanciamos la ventana
+        VentanaPrincipal ventana = new VentanaPrincipal();
+    }
 }
