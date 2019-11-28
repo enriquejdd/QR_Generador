@@ -32,6 +32,9 @@ public class VentanaPrincipal extends JFrame{
         
         //Añade el panel a la ventana
         this.add(panel);
+        
+        // Hacer visible la ventana, este paso debe ser el final para que muestre todo
+        this.setVisible(true);
     }
     
     // Método privado (no se puede usar en otra clase)
@@ -48,8 +51,7 @@ public class VentanaPrincipal extends JFrame{
         // Cerrar progrma al pulsar el aspa
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        // Hacer visible la ventana
-        this.setVisible(true);
+        
     }
     
 }
