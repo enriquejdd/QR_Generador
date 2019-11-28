@@ -5,6 +5,14 @@
  */
 package qr;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author usuario
@@ -14,5 +22,34 @@ public class QR {
     public static final int ANCHO_QR = 400;
     public static final int ALTO_QR = 400;
     
+    // Este método genera un archivo en el disco duro con el nombre que
+    // se indica en la varibale "fichero". El texto que codifica está contenido en
+    // "texto" y el formato de imagen puede ser jpeg, tiff, gif, png.
     
+    public static void escribirQR(String texto, String fichero, String formatoImagen){
+        
+        // Objeto QRCodeWriter
+        // Renderiza un Código QR como una matriz de dos dimensiones (bitMatrix)
+        
+        QRCodeWriter qrcw = new QRCodeWriter();
+        
+        BitMatrix matrizPuntos = null;
+        // FileOutputStream escribe en un fichero un flujo de bytes
+        FileOutputStream ficheroSalida = null;
+        
+        try{
+            //
+            matrizPuntos = qrcw.encode(texto, BarcodeFormat.QR_CODE, ANCHO_QR, ALTO_QR);
+            
+            ficheroSalida = new FileOutputStream(new File(fichero));
+            
+            MatrixImageWriter.writeToStream(matrizPuntos, "png" , ficheroSalida);
+            
+        } catch (WriterException ex){
+            JOptionPane.showMessageDialog(null, "El contenido no puede ser codificado");
+        } catch (FileOutputStream ex){
+            JOptionPane.showMessageDialog(null, "Problemas durante la creación del fichero");
+        } catch (IOException ex){
+            JOptionPane.showMessageDialog(null, "Problemas con la escritura");
+    }
 }
