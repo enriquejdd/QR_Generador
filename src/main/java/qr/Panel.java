@@ -75,6 +75,10 @@ public class Panel extends JPanel{
                 if (txtUrl.getText().isEmpty() || txtFichero.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null,"Has dejado algún campo vacio");
                 }
+                else{
+                    // Código generación del QR
+                    QR.escribirQR(txtUrl.getText(),txtFichero.getText(),"png");
+                }
             }
         });
         
