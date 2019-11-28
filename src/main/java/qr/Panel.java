@@ -7,8 +7,11 @@ package qr;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -64,8 +67,29 @@ public class Panel extends JPanel{
         btnGenerar = new JButton("Generar cógido QR");
         this.add(btnGenerar);
          
+        // Comportamiento del botón generar
+        btnGenerar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                // Si algun campo esta vacio 
+                if (txtUrl.getText().isEmpty() || txtFichero.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null,"Has dejado algún campo vacio");
+                }
+            }
+        });
+        
         // Añadimos el botón de Cerrar
         btnCerrar = new JButton("Salir");
         this.add(btnCerrar);
+        
+        // Añadimos comportamiento boton cerrar
+        // Usamos una clase interna anónima interna al método addActionListener
+        // anónima porque no tiene nombre idenificador.
+        btnCerrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.exit(0);
+            }
+        });
      }
 }
