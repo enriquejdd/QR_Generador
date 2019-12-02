@@ -78,6 +78,7 @@ public class Panel extends JPanel{
                 else{
                     // Código generación del QR
                     QR.escribirQR(txtUrl.getText(),txtFichero.getText(),"png");
+                    new VentanaResultado(txtFichero.getText());
                 }
             }
         });
