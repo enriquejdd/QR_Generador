@@ -7,6 +7,7 @@ package qr;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import java.io.File;
@@ -28,7 +29,7 @@ public class QR {
     // se indica en la varibale "fichero". El texto que codifica está contenido en
     // "texto" y el formato de imagen puede ser jpeg, tiff, gif, png.
     
-    public static void escribirQR(String texto, String fichero, String formatoImagen) throws FileNotFoundException{
+    public static void escribirQR(String texto, String fichero, String formatoImagen){
         
         // Objeto QRCodeWriter
         // Renderiza un Código QR como una matriz de dos dimensiones (bitMatrix)
@@ -45,11 +46,11 @@ public class QR {
             
             ficheroSalida = new FileOutputStream(new File(fichero));
             
-            MatrixImageWriter.writeToStream(matrizPuntos, formatoImagen , ficheroSalida);
+            MatrixToImageWriter.writeToStream(matrizPuntos, formatoImagen , ficheroSalida);
             
         } catch (WriterException ex){
             JOptionPane.showMessageDialog(null, "El contenido no puede ser codificado");
-        } catch (FileOutputStream ex){
+        } catch (FileNotFoundException ex){
             JOptionPane.showMessageDialog(null, "Problemas durante la creación del fichero");
         } catch (IOException ex){
             JOptionPane.showMessageDialog(null, "Problemas con la escritura");
